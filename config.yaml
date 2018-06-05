@@ -1,0 +1,35 @@
+common:
+  namespace: ${NAMESPACE}
+  secretName: azure-registry
+  registry: ${REGISTRY_URL}
+
+elasticsearch:
+  image:
+    tag: ${TAG}
+  client:
+    replicas: 2
+  master:
+    replicas: 3
+  data:
+    replicas: 2
+    storageAccount: ${STORAGE_ACCOUNT}
+    location: ${STORAGE_LOCATION}
+    storageSku: ${STORAGE_SKU}
+
+kibana:
+  image:
+    tag: ${TAG}
+  replicaCount: 1
+  env:
+    USERNAME: ${USERNAME}
+    PASSWORD: '${PASSWORD}'
+
+logstash:
+  image:
+    tag: ${TAG}
+  replicaCount: 1
+
+filebeat:
+  image:
+    tag: 1.0.0
+
